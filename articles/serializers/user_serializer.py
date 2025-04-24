@@ -17,3 +17,12 @@ class RegisterSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'username':{'required':True},
         }
+
+        def validate(self, attrs):
+            if attrs['password'] != attrs['password2']:
+                raise serializers.ValidationError({"password": "Şifreler eşleşmiyor."})
+            return attrs
+        
+        def create(self, validated_data):
+            validated_data.pop('password2')
+            user = User.objects.create_user(**validated_data)
