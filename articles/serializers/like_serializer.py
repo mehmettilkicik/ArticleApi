@@ -1,8 +1,10 @@
 from rest_framework import serializers
-from models.like_model import Like
+from articles.models import Like
 
 class LikeSerializer(serializers.ModelSerializer):
     class Meta:
+        model = Like
+
         fields=[
             "id",
             "article",
