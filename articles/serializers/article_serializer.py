@@ -33,8 +33,8 @@ class ArticleSerializer(serializers.ModelSerializer):
             'comments',
         ]
 
-        def get_like_count(self, obj):
+    def get_like_count(self, obj):
             return obj.likes.count()
         
-        def get_comment_count(self,obj):
+    def get_comment_count(self,obj):
             return obj.comments.count()
