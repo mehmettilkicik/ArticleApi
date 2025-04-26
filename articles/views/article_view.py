@@ -38,6 +38,7 @@ class ArticleDetailView(APIView):
             return Response({'detail': 'Bu makaleyi güncelleme yetkiniz yok'},status=status.HTTP_403_FORBIDDEN)
         serializer = ArticleSerializer(article, data=request.data)
         if serializer.is_valid():
+            serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     

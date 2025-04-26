@@ -8,9 +8,8 @@ from articles.models.comment_model import Comment
 from articles.serializers.comment_serializer import CommentSerializer
 
 
-class CreateListCommentView(APIView):
-    permission_classes= [permissions.IsAuthenticatedOrReadOnly]
-
+class CommentCreateListView(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def post(self,request,id):
         serializer = CommentSerializer(data=request.data)

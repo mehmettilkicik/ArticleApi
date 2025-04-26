@@ -12,8 +12,11 @@ urlpatterns = [
 
     #Article
     path('articles/', ArticleListCreateView.as_view(),name='articles'),
-    path('articles/<int:id>', ArticleDetailView.as_view(),name='article_detail'),
+    path('articles/<int:id>/', ArticleDetailView.as_view(),name='article_detail'),
 
     #Comments
-    path('articles/<int:id>/comments', CreateListCommentView.as_view(),name='comments')
+    path('articles/<int:id>/comments/', CommentCreateListView.as_view(),name='comments'),
+    
+    #Likes
+    path('articles/<int:id>/like/', LikeCreateDestroyView.as_view(), name='like')
 ]
